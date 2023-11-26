@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Exports\ProductsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -25,5 +27,13 @@ class ProductController extends Controller
         $product = Product::create($request->validated()); 
 
         return redirect()->route('index');
+    }
+
+
+    public function export()
+    {
+        $filename = 'products.csv';
+        return Excel::download(new ProductsExport, $filename);
+
     }
 }

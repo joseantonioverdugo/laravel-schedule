@@ -17,3 +17,4 @@ use App\Http\Controllers\ProductController;
 Route::get('/', [ProductController::class, 'index'])->name('index');
 Route::get('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
 Route::post('/addProduct', [ProductController::class, 'store'])->name('store');
+Route::get('/export', [ProductController::class, 'export'])->name('export');

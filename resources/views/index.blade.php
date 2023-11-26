@@ -9,7 +9,10 @@
 </head>
 <body>
     <h1>Automation Test</h1>
-    <a href="{{route('addProduct')}}">Add Product</a>
+    <div>
+        <a href="{{route('addProduct')}}">Add Product</a>
+        <a href="{{route('export')}}">Download Excel</a>
+    </div>
 
     <table>
         <thead>
