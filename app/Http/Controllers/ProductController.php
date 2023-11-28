@@ -6,7 +6,10 @@ use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Exports\ProductsExport;
+use App\Mail\ProductsMail;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+
 
 class ProductController extends Controller
 {
@@ -35,5 +38,11 @@ class ProductController extends Controller
         $filename = 'products.csv';
         return Excel::download(new ProductsExport, $filename);
 
+    }
+
+    public function sendEmail()
+    {
+        Mail::to(env('EMAIL_RECEIVER'))->send(new ProductsMail());
+        return view('sendEmail');
     }
 }
