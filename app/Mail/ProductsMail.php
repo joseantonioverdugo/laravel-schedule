@@ -10,6 +10,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Exports\ProductsExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
 
 
 class ProductsMail extends Mailable
@@ -31,7 +32,7 @@ class ProductsMail extends Mailable
        $excel = Excel::raw($export, \Maatwebsite\Excel\Excel::CSV);
 
        return $this->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
-       ->subject('This is an Example Mail')
+       ->subject('Objetos creados el '. Carbon::today()->format('d-m-Y'))
        ->view('emails.products')
        ->attachData($excel, $filename, [
          'mime' => 'text/csv',

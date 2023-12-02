@@ -5,6 +5,7 @@ namespace App\Exports;
 use App\Models\Product;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Carbon\Carbon;
 
 class ProductsExport implements FromCollection , WithHeadings
 {
@@ -13,7 +14,7 @@ class ProductsExport implements FromCollection , WithHeadings
     */
     public function collection()
     {
-        return Product::select('name', 'price', 'description')->get();
+        return Product::getProductsAddedToday();
     }
 
     public function headings(): array

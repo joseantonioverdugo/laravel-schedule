@@ -12,6 +12,7 @@
     <div>
         <a href="{{route('addProduct')}}">Add Product</a>
         <a href="{{route('export')}}">Download Excel</a>
+        <a href="{{route('sendEmail')}}">Send Email</a>
     </div>
 
     <table>
