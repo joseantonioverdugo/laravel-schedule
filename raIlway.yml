@@ -1,0 +1,13 @@
+services:
+  app:
+    image: 'railwayapp/php:latest'
+    env_file: '.env'
+    build:
+      context: ./
+
+  worker:
+    image: 'railwayapp/php:latest'
+    env_file: '.env'
+    build:
+      context: ./
+    command: php artisan queue:work
